@@ -2,6 +2,104 @@
 import argparse
 from random import choice, randrange
 
+class TroupeClass:
+    def __init__(self, class_name="", favored_stats=[], description="", 
+                 stat_distribution={"Skill": [], "Chance": [], "Reaction": [], "Unique": [], "Brawl": [], "Tough": []}):
+        self.class_name = class_name
+        self.favored_stats = favored_stats
+        self.description = description
+        self.stat_distribution = stat_distribution
+
+class Jester(TroupeClass):
+    def __init__(self, class_name="", favored_stats=[], description="", 
+                 stat_distribution={}):
+        self.class_name = "Jester"
+        self.favored_stats = ["Skill"]
+        self.description = "Despised, deadly, and dedicated to the bit."
+        self.stat_distribution = {
+            "Skill": [2, 2, 3],
+            "Chance": [0,1,2], 
+            "Reaction": [0,1,2], 
+            "Unique": [0,1,2], 
+            "Brawl": [0,1,2], 
+            "Tough": [1,1,2]
+    }
+
+class Hedge(TroupeClass):
+    def __init__(self, class_name="", favored_stats=[], description="", 
+                 stat_distribution={}):
+        self.class_name = "Hedge"
+        self.favored_stats = ["Chance", "Reaction"]
+        self.description = "Handy, keen, and in tune with the world around you."
+        self.stat_distribution = {
+            "Skill": [0, 0, 1],
+            "Chance": [2,2,3], 
+            "Reaction": [1,2,3], 
+            "Unique": [0,1,2], 
+            "Brawl": [0,0,1], 
+            "Tough": [1,1,2]
+    }
+
+class Ghelf(TroupeClass):
+    def __init__(self, class_name="", favored_stats=[], description="", 
+                 stat_distribution={}):
+        self.class_name = "Ghelf"
+        self.favored_stats = ["Reaction", "Unique", "Brawl"]
+        self.description = "Callous, charismatic, and cruel."
+        self.stat_distribution = {
+            "Skill": [0, 0, 1],
+            "Chance": [0,0,1], 
+            "Reaction": [2,2,3], 
+            "Unique": [1,2,3], 
+            "Brawl": [1,2,3], 
+            "Tough": [0,1,1]
+    }
+class Witch(TroupeClass):
+    def __init__(self, class_name="", favored_stats=[], description="", 
+                 stat_distribution={}):
+        self.class_name = "Witch"
+        self.favored_stats = ["Unique", "Chance"]
+        self.description = "Mystical, knowledgable, and solitary"
+        self.stat_distribution = {
+            "Skill": [0, 1, 2],
+            "Chance": [1,2,3], 
+            "Reaction": [0,0,1], 
+            "Unique": [2,2,3], 
+            "Brawl": [0,1,2], 
+            "Tough": [0,1,1]
+    }
+        
+class Ogra(TroupeClass):
+    def __init__(self, class_name="", favored_stats=[], description="", 
+                 stat_distribution={}):
+        self.class_name = "Ogra"
+        self.favored_stats = ["Brawl", "Skill", "Tough"]
+        self.description = "Bestial, powerful, and hungry"
+        self.stat_distribution = {
+            "Skill": [1, 2, 3],
+            "Chance": [0,0,1], 
+            "Reaction": [0,0,1], 
+            "Unique": [0,0,1], 
+            "Brawl": [2,2,3], 
+            "Tough": [1,2,3]
+    }
+        
+class Errant(TroupeClass):
+    def __init__(self, class_name="", favored_stats=[], description="", 
+                 stat_distribution={}):
+        self.class_name = "Errant"
+        self.favored_stats = ["Tough", "Brawl"]
+        self.description = "Beaten, bruised, and spiteful"
+        self.stat_distribution = {
+            "Skill": [0, 0, 1],
+            "Chance": [0,1,2], 
+            "Reaction": [0,1,2], 
+            "Unique": [0,0,1], 
+            "Brawl": [1,2,3], 
+            "Tough": [2,2,3]
+    }
+
+
 class TroupeCharacter:
     def __init__(self, job="", name="", expertise=None, equipment=None, abilities=None, principles=None):
         self.name = name
@@ -67,6 +165,7 @@ if (answer.lower()) == "b":
 print(f"Okay! You ability scores will be selected from {possible_scores}")
 
 #Step four, assign ability scores
+print(f"Next, you need to assign your ability scores. You are a {new_char.job}, so your most important stats are")
 
 #Step 5, roll for expertises for job type
 
