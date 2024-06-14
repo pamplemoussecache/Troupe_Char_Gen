@@ -16,9 +16,9 @@ class TroupeCharacter:
         if (len(self.principles > 2)):
             answer = input("Adding another principle will remove one of your existing ones. Are you sure you want to continue? y/n")
             answer = answer.lower()
-            if answer.equals("y") or answer.equals("yes"):
+            if answer == "y" or answer == "yes":
                 self.principles = [self.principles[1], principle]
-            elif answer.equals("n") or answer.equals("no"):
+            elif answer == "n" or answer == "no":
                 print("Fair enough! You have kept your principles, which are: ")
                 print("- " + self.principles[0])
                 print("- " + self.principles[1])
@@ -56,11 +56,15 @@ set_job()
 possible_scores = []
 for i in range(6):
     possible_scores.append(randrange(1,6))
-print(possible_scores)
-
-
+print("Option A: ", possible_scores)
 
 #Step three, decide whether to keep ability scores or take 1,2,3,4,5,6
+print("Option B: [1, 2, 3, 4, 5, 6]")
+answer = input("Do you want A or B?")
+if (answer.lower()) == "b":
+    possible_scores = [1,2,3,4,5,6]
+
+print(f"Okay! You ability scores will be selected from {possible_scores}")
 
 #Step four, assign ability scores
 
