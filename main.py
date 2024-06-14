@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 import argparse
-from random import choice
+from random import choice, randrange
 
 class TroupeCharacter:
-    def __init__(self, job, name, expertise, equipment, abilities, principles):
+    def __init__(self, job="", name="", expertise=None, equipment=None, abilities=None, principles=None):
         self.name = name
         self.job = job
         self.expertise = expertise
-        self.equipment = {weapon: [], food: [], junk: []}
+        self.equipment = {"weapon": [], "food": [], "junk": []}
         self.abilities = []
         self.principles = []
     def add_ability(self, ability):
         self.abilities.append(ability)
-
     def add_principle(self, principle):
         if (len(self.principles > 2)):
             answer = input("Adding another principle will remove one of your existing ones. Are you sure you want to continue? y/n")
@@ -29,7 +28,7 @@ class TroupeCharacter:
         else:
             self.principles.append(principle)
 
-
+new_char = TroupeCharacter()
 
 
 parser = argparse.ArgumentParser(description="Troupe Character Generator")
@@ -41,11 +40,25 @@ parser.add_argument("abilities")
 parser.add_argument("name")
 parser.add_argument("principles")
 
+def set_job():
+    jobs = ["jester", "hedge", "ghelf", "witch", "errant"]
+    new_job = choice(jobs)
+    answer = input(f"You rolled {new_job}! Would you like to keep it or roll again?")
+    if "keep" in answer:
+        new_char.job = new_job
+    else:
+        set_job()
+
 #Step one, roll for job if not already set
-jobs = ["jester", "hedge", "ghelf", "witch", "errant"]
-print(choice(jobs))
+set_job()
 
 #Step two, roll ability scores
+possible_scores = []
+for i in range(6):
+    possible_scores.append(randrange(1,6))
+print(possible_scores)
+
+
 
 #Step three, decide whether to keep ability scores or take 1,2,3,4,5,6
 
